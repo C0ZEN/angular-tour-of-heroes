@@ -6,13 +6,13 @@ import {
 	OnInit,
 	Output
 } from '@angular/core';
-import {ButtonConfigService} from './button-config.service';
+import {AdmFwkButtonConfigService} from './button-config.service';
 import {
 	AdmFwkButtonStyles,
 	AdmFwkButtonTypes
 } from './button.enums';
-import {LoggerWarnService} from '../../services/logger/logger-warn.service';
-import {LoggerInfoService} from '../../services/logger/logger-info.service';
+import {AdmFwkLoggerWarnService} from '../../services/logger/logger-warn.service';
+import {AdmFwkLoggerInfoService} from '../../services/logger/logger-info.service';
 import * as _ from 'lodash';
 
 @Component({
@@ -20,20 +20,20 @@ import * as _ from 'lodash';
 	templateUrl: './button.component.html',
 	styleUrls  : ['./button.component.scss'],
 	providers  : [
-		LoggerWarnService,
-		LoggerInfoService
+		AdmFwkLoggerWarnService,
+		AdmFwkLoggerInfoService
 	]
 })
 
-export class ButtonComponent implements OnInit, OnChanges {
-	@Input() public admFwkButtonLabel: string             = this.buttonConfigService.label;
-	@Input() public admFwkButtonType: AdmFwkButtonTypes   = this.buttonConfigService.type;
-	@Input() public admFwkButtonStyle: AdmFwkButtonStyles = this.buttonConfigService.style;
+export class AdmFwkButtonComponent implements OnInit, OnChanges {
+	@Input() public admFwkButtonLabel: string             = this.buttonConfig.label;
+	@Input() public admFwkButtonType: AdmFwkButtonTypes   = this.buttonConfig.type;
+	@Input() public admFwkButtonStyle: AdmFwkButtonStyles = this.buttonConfig.style;
 	@Input() public admFwkButtonDisabled: boolean         = false;
 
 	@Output() public admFwkButtonOnClick: EventEmitter<string> = new EventEmitter();
 
-	public constructor(private buttonConfigService: ButtonConfigService, private warn: LoggerWarnService, private info: LoggerInfoService) {
+	public constructor(private buttonConfig: AdmFwkButtonConfigService, private warn: AdmFwkLoggerWarnService, private info: AdmFwkLoggerInfoService) {
 	}
 
 	public ngOnInit(): void {
@@ -43,15 +43,15 @@ export class ButtonComponent implements OnInit, OnChanges {
 		if (_.has(data, 'admFwkButtonType')) {
 			if (!(Object.values(AdmFwkButtonTypes).includes(data.admFwkButtonType.currentValue))) {
 				this.warn.notInEnumValues(data.admFwkButtonType.currentValue, 'AdmFwkButtonTypes');
-				this.info.callbackOnDefaultValue(this.buttonConfigService.type);
-				this.admFwkButtonType = this.buttonConfigService.type;
+				this.info.callbackOnDefaultValue(this.buttonConfig.type);
+				this.admFwkButtonType = this.buttonConfig.type;
 			}
 		}
 		if (_.has(data, 'admFwkButtonStyle')) {
 			if (!(Object.values(AdmFwkButtonStyles).includes(data.admFwkButtonStyle.currentValue))) {
 				this.warn.notInEnumValues(data.admFwkButtonStyle.currentValue, 'AdmFwkButtonStyles');
-				this.info.callbackOnDefaultValue(this.buttonConfigService.style);
-				this.admFwkButtonStyle = this.buttonConfigService.style;
+				this.info.callbackOnDefaultValue(this.buttonConfig.style);
+				this.admFwkButtonStyle = this.buttonConfig.style;
 			}
 		}
 	}

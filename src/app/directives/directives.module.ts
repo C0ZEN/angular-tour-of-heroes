@@ -1,18 +1,18 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {DisabledDirective} from './disabled/disabled.directive';
+import {AdmFwkDisabledDirective} from './disabled/disabled.directive';
 
 @NgModule({
 	imports     : [
 		CommonModule
 	],
 	declarations: [
-		DisabledDirective
+		AdmFwkDisabledDirective
 	],
 	exports     : [
-		DisabledDirective
+		AdmFwkDisabledDirective
 	]
 })
 
-export class DirectivesModule {
+export class AdmFwkDirectivesModule {
 }

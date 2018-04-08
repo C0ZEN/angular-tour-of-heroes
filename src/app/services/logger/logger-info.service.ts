@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {NGXLogger} from 'ngx-logger';
-import {LoggerService} from './logger.service';
+import {AdmFwkLoggerService} from './logger.service';
 
 @Injectable()
-export class LoggerInfoService extends LoggerService {
+export class AdmFwkLoggerInfoService extends AdmFwkLoggerService {
 	public constructor(protected logger: NGXLogger) {
 		super(logger);
 	}

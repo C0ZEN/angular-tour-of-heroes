@@ -7,6 +7,5 @@ import {Component} from '@angular/core';
 })
 
 export class AppComponent {
-	public title: string     = 'Tour of Heroes';
 	public disabled: boolean = true;
 }

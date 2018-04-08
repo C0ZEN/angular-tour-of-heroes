@@ -11,15 +11,16 @@ import {
 
 import {AppComponent} from './app.component';
 
-import {ButtonModule} from './components/button/button.module';
-import {DirectivesModule} from './directives/directives.module';
-import {ButtonConfigService} from './components/button/button-config.service';
+import {AdmFwkButtonModule} from './components/button/button.module';
+import {AdmFwkDirectivesModule} from './directives/directives.module';
+import {AdmFwkButtonConfigService} from './components/button/button-config.service';
 import {environment} from '../environments/environment';
-import {ServicesModule} from './services/services.module';
+import {AdmFwkServicesModule} from './services/services.module';
+import {AdmFwkConfig} from './app-config.service';
 
-export function configFactory(buttonConfigService: ButtonConfigService): any {
+export function configFactory(buttonConfig: AdmFwkButtonConfigService): any {
 	return (): void => {
-		buttonConfigService.label = environment.components.button.label;
+		buttonConfig.label = environment.components.button.label;
 	};
 }
 
@@ -30,25 +31,26 @@ export function configFactory(buttonConfigService: ButtonConfigService): any {
 	imports     : [
 		BrowserModule,
 		FormsModule,
-		ButtonModule,
-		DirectivesModule,
+		AdmFwkButtonModule,
+		AdmFwkDirectivesModule,
 		LoggerModule.forRoot({
 			level         : NgxLoggerLevel.DEBUG,
 			serverLogLevel: NgxLoggerLevel.OFF
 		}),
-		ServicesModule
+		AdmFwkServicesModule
 	],
 	providers   : [
-		ButtonConfigService,
+		AdmFwkConfig,
+		AdmFwkButtonConfigService,
 		{
 			provide   : APP_INITIALIZER,
 			useFactory: configFactory,
-			deps      : [ButtonConfigService],
+			deps      : [AdmFwkButtonConfigService],
 			multi     : true
 		}
 	],
 	bootstrap   : [AppComponent]
 })
 
-export class AppModule {
+export class AdmFwkModule {
 }

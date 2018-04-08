@@ -9,7 +9,7 @@ import {
 	selector: '[admFwkDisabled]'
 })
 
-export class DisabledDirective {
+export class AdmFwkDisabledDirective {
 	@Input()
 	public set admFwkDisabled(disabled: boolean) {
 		disabled ? this.disable() : this.enable();

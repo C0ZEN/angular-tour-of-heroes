@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {LoggerModule} from './logger/logger.module';
+import {AdmFwkLoggerModule} from './logger/logger.module';
 
 @NgModule({
 	imports: [
 		CommonModule,
-		LoggerModule
+		AdmFwkLoggerModule
 	]
 })
 
-export class ServicesModule {
+export class AdmFwkServicesModule {
 }

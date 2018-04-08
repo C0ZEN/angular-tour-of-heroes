@@ -5,7 +5,7 @@ import {
 } from './button.enums';
 
 @Injectable()
-export class ButtonConfigService {
+export class AdmFwkButtonConfigService {
 	private _label: string = 'Label';
 
 	public get label(): string {
@@ -37,6 +37,5 @@ export class ButtonConfigService {
 	}
 
 	public constructor() {
-
 	}
 }
