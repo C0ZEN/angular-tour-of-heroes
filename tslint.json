@@ -21,10 +21,10 @@
       "rxjs",
       "rxjs/Rx"
     ],
-    "import-spacing": false,
+    "import-spacing": true,
     "indent": [
       true,
-      "spaces"
+      "tabs"
     ],
     "interface-over-type-literal": true,
     "label-position": true,
@@ -32,15 +32,19 @@
       true,
       140
     ],
-    "member-access": false,
+    "member-access": [
+      true,
+      "check-accessor",
+      "check-constructor"
+    ],
     "member-ordering": [
       true,
       {
         "order": [
-          "static-field",
-          "instance-field",
-          "static-method",
-          "instance-method"
+          "public-static-field",
+          "public-instance-field",
+          "public-static-method",
+          "public-instance-method"
         ]
       }
     ],
@@ -60,6 +64,11 @@
     "no-empty": false,
     "no-empty-interface": true,
     "no-eval": true,
+    "no-inferrable-types": [
+      true,
+      "ignore-params",
+      "ignore-properties"
+    ],
     "no-misused-new": true,
     "no-non-null-assertion": true,
     "no-shadowed-variable": true,
@@ -103,6 +112,18 @@
         "variable-declaration": "nospace"
       }
     ],
+    "typedef": [
+      true,
+      "call-signature",
+      "arrow-call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration",
+      "object-destructuring",
+      "array-destructuring"
+    ],
     "unified-signatures": true,
     "variable-name": false,
     "whitespace": [
@@ -116,13 +137,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "admFwk",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "adm-fwk",
       "kebab-case"
     ],
     "no-output-on-prefix": true,
@@ -134,6 +155,7 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true
+    "directive-class-suffix": true,
+    "no-duplicate-variable": true
   }
 }

@@ -1,48 +1,43 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {
-  APP_INITIALIZER,
-  NgModule
-}                      from '@angular/core';
-import {FormsModule}   from '@angular/forms';
+	APP_INITIALIZER,
+	NgModule
+} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
 
-import {AppComponent}        from './app.component';
-import {HeroesComponent}     from './heroes/heroes.component';
-import {HeroDetailComponent} from './hero-detail/hero-detail.component';
+import {AppComponent} from './app.component';
 
-import {HeroService}       from './hero.service';
-import {MessagesComponent} from './messages/messages.component';
-import {MessageService}    from './message.service';
-import {BtnComponent}      from './btn/btn.component';
-import {BtnService}        from './btn/btn.service';
+import {ButtonModule} from './components/button/button.module';
+import {DirectivesModule} from './directives/directives.module';
+import {ButtonConfigService} from './components/button/button-config.service';
+import {environment} from '../environments/environment';
 
-export function overrideBtnConfig(btnService: BtnService) {
-  return () => btnService.label = 'Toto';
+export function configFactory(buttonConfigService: ButtonConfigService): any {
+	return (): void => {
+		buttonConfigService.label = environment.components.button.label;
+	};
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
-    MessagesComponent,
-    BtnComponent
-  ],
-  imports     : [
-    BrowserModule,
-    FormsModule
-  ],
-  providers   : [
-    HeroService,
-    MessageService,
-    BtnService,
-    {
-      provide   : APP_INITIALIZER,
-      useFactory: overrideBtnConfig,
-      deps      : [BtnService],
-      multi     : true
-    }
-  ],
-  bootstrap   : [AppComponent]
+	declarations: [
+		AppComponent
+	],
+	imports     : [
+		BrowserModule,
+		FormsModule,
+		ButtonModule,
+		DirectivesModule
+	],
+	providers   : [
+		ButtonConfigService,
+		{
+			provide   : APP_INITIALIZER,
+			useFactory: configFactory,
+			deps      : [ButtonConfigService],
+			multi     : true
+		}
+	],
+	bootstrap   : [AppComponent]
 })
 
 export class AppModule {
