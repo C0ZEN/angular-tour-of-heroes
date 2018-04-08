@@ -6,6 +6,10 @@ import {
 
 @Injectable()
 export class AdmFwkButtonConfigService {
+
+	/**
+	 * Label display on the button
+	 */
 	private _label: string = 'Label';
 
 	public get label(): string {
@@ -16,6 +20,10 @@ export class AdmFwkButtonConfigService {
 		this._label = value;
 	}
 
+	/**
+	 * Literally the attribute `type` attached to the button
+	 * Should respect the conventional choices from W3C
+	 */
 	private _type: AdmFwkButtonTypes = AdmFwkButtonTypes.Button;
 
 	public get type(): AdmFwkButtonTypes {
@@ -26,6 +34,10 @@ export class AdmFwkButtonConfigService {
 		this._type = value;
 	}
 
+	/**
+	 * Class added on the root element of the button
+	 * Used to change the design of the button
+	 */
 	private _style: AdmFwkButtonStyles = AdmFwkButtonStyles.Primary;
 
 	public get style(): AdmFwkButtonStyles {

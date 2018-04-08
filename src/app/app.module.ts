@@ -16,10 +16,15 @@ import {AdmFwkDirectivesModule} from './directives/directives.module';
 import {AdmFwkButtonConfigService} from './components/button/button-config.service';
 import {environment} from '../environments/environment';
 import {AdmFwkServicesModule} from './services/services.module';
-import {AdmFwkConfig} from './app-config.service';
+import {AdmFwkConfigService} from './app-config.service';
 
-export function configFactory(buttonConfig: AdmFwkButtonConfigService): any {
+export function configFactory(
+	buttonConfig: AdmFwkButtonConfigService,
+	config: AdmFwkConfigService
+): any {
 	return (): void => {
+		config.debug       = environment.debug;
+		config.logs        = environment.logs;
 		buttonConfig.label = environment.components.button.label;
 	};
 }
@@ -40,12 +45,15 @@ export function configFactory(buttonConfig: AdmFwkButtonConfigService): any {
 		AdmFwkServicesModule
 	],
 	providers   : [
-		AdmFwkConfig,
+		AdmFwkConfigService,
 		AdmFwkButtonConfigService,
 		{
 			provide   : APP_INITIALIZER,
 			useFactory: configFactory,
-			deps      : [AdmFwkButtonConfigService],
+			deps      : [
+				AdmFwkButtonConfigService,
+				AdmFwkConfigService
+			],
 			multi     : true
 		}
 	],

@@ -14,6 +14,7 @@ import {
 import {AdmFwkLoggerWarnService} from '../../services/logger/logger-warn.service';
 import {AdmFwkLoggerInfoService} from '../../services/logger/logger-info.service';
 import * as _ from 'lodash';
+import {AdmFwkConfigService} from '../../app-config.service';
 
 @Component({
 	selector   : 'adm-fwk-button',
@@ -33,25 +34,32 @@ export class AdmFwkButtonComponent implements OnInit, OnChanges {
 
 	@Output() public admFwkButtonOnClick: EventEmitter<string> = new EventEmitter();
 
-	public constructor(private buttonConfig: AdmFwkButtonConfigService, private warn: AdmFwkLoggerWarnService, private info: AdmFwkLoggerInfoService) {
+	public constructor(
+		private config: AdmFwkConfigService,
+		private buttonConfig: AdmFwkButtonConfigService,
+		private warn: AdmFwkLoggerWarnService,
+		private info: AdmFwkLoggerInfoService
+	) {
 	}
 
 	public ngOnInit(): void {
 	}
 
 	public ngOnChanges(data: any): void {
-		if (_.has(data, 'admFwkButtonType')) {
-			if (!(Object.values(AdmFwkButtonTypes).includes(data.admFwkButtonType.currentValue))) {
-				this.warn.notInEnumValues(data.admFwkButtonType.currentValue, 'AdmFwkButtonTypes');
-				this.info.callbackOnDefaultValue(this.buttonConfig.type);
-				this.admFwkButtonType = this.buttonConfig.type;
+		if (this.config.debug) {
+			if (_.has(data, 'admFwkButtonType')) {
+				if (!(Object.values(AdmFwkButtonTypes).includes(data.admFwkButtonType.currentValue))) {
+					this.warn.notInEnumValues(data.admFwkButtonType.currentValue, 'AdmFwkButtonTypes');
+					this.info.callbackOnDefaultValue(this.buttonConfig.type);
+					this.admFwkButtonType = this.buttonConfig.type;
+				}
 			}
-		}
-		if (_.has(data, 'admFwkButtonStyle')) {
-			if (!(Object.values(AdmFwkButtonStyles).includes(data.admFwkButtonStyle.currentValue))) {
-				this.warn.notInEnumValues(data.admFwkButtonStyle.currentValue, 'AdmFwkButtonStyles');
-				this.info.callbackOnDefaultValue(this.buttonConfig.style);
-				this.admFwkButtonStyle = this.buttonConfig.style;
+			if (_.has(data, 'admFwkButtonStyle')) {
+				if (!(Object.values(AdmFwkButtonStyles).includes(data.admFwkButtonStyle.currentValue))) {
+					this.warn.notInEnumValues(data.admFwkButtonStyle.currentValue, 'AdmFwkButtonStyles');
+					this.info.callbackOnDefaultValue(this.buttonConfig.style);
+					this.admFwkButtonStyle = this.buttonConfig.style;
+				}
 			}
 		}
 	}

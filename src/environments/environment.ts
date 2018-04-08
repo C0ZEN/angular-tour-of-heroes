@@ -5,6 +5,8 @@
 // tslint:disable:typedef
 export const environment = {
 	production: false,
+	debug: true,
+	logs: true,
 	components: {
 		button: {
 			label: 'Hello you !'
