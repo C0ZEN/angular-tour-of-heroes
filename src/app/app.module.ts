@@ -4,6 +4,10 @@ import {
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
+import {
+	LoggerModule,
+	NgxLoggerLevel
+} from 'ngx-logger';
 
 import {AppComponent} from './app.component';
 
@@ -11,6 +15,7 @@ import {ButtonModule} from './components/button/button.module';
 import {DirectivesModule} from './directives/directives.module';
 import {ButtonConfigService} from './components/button/button-config.service';
 import {environment} from '../environments/environment';
+import {ServicesModule} from './services/services.module';
 
 export function configFactory(buttonConfigService: ButtonConfigService): any {
 	return (): void => {
@@ -26,7 +31,12 @@ export function configFactory(buttonConfigService: ButtonConfigService): any {
 		BrowserModule,
 		FormsModule,
 		ButtonModule,
-		DirectivesModule
+		DirectivesModule,
+		LoggerModule.forRoot({
+			level         : NgxLoggerLevel.DEBUG,
+			serverLogLevel: NgxLoggerLevel.OFF
+		}),
+		ServicesModule
 	],
 	providers   : [
 		ButtonConfigService,

@@ -22,14 +22,20 @@
 <ul>
 	<li>
 		<adm-fwk-button [admFwkButtonDisabled]="disabled"></adm-fwk-button>
-		<adm-fwk-button admFwkButtonLabel="Hello"
+		<adm-fwk-button admFwkButtonLabel="Disabled button"
 						[admFwkButtonDisabled]="disabled">
+		</adm-fwk-button>
+		<adm-fwk-button admFwkButtonLabel="Wrong type button"
+						[admFwkButtonType]="'Type'">
+		</adm-fwk-button>
+		<adm-fwk-button admFwkButtonLabel="Wrong style button"
+						[admFwkButtonStyle]="'Style'">
 		</adm-fwk-button>
 	</li>
 	<li>
 		<adm-fwk-button admFwkButtonLabel="Toggle"
 						(admFwkButtonOnClick)="disabled = !disabled"
-						admFwkButtonType="submit">
+						[admFwkButtonType]="'submit'">
 		</adm-fwk-button>
 	</li>
 	<li>Disabled: {{disabled}}</li>
