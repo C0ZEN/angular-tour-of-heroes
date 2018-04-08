@@ -8,9 +8,8 @@ import {
 	LoggerModule,
 	NgxLoggerLevel
 } from 'ngx-logger';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from './app.component';
-
 import {AdmFwkButtonModule} from './components/button/button.module';
 import {AdmFwkDirectivesModule} from './directives/directives.module';
 import {AdmFwkButtonConfigService} from './components/button/button-config.service';
@@ -42,7 +41,8 @@ export function configFactory(
 			level         : NgxLoggerLevel.DEBUG,
 			serverLogLevel: NgxLoggerLevel.OFF
 		}),
-		AdmFwkServicesModule
+		AdmFwkServicesModule,
+		NgbModule.forRoot()
 	],
 	providers   : [
 		AdmFwkConfigService,

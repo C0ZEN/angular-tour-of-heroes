@@ -1,22 +1,68 @@
-<ul>
-	<li>
-		<adm-fwk-button [admFwkButtonDisabled]="disabled"></adm-fwk-button>
-		<adm-fwk-button admFwkButtonLabel="Disabled button"
-						[admFwkButtonDisabled]="disabled">
-		</adm-fwk-button>
-		<adm-fwk-button admFwkButtonLabel="Wrong type button"
-						[admFwkButtonType]="'Type'">
-		</adm-fwk-button>
-		<adm-fwk-button admFwkButtonLabel="Wrong style button"
-						[admFwkButtonStyle]="'Style'">
-		</adm-fwk-button>
-	</li>
-	<li>
-		<adm-fwk-button admFwkButtonLabel="Toggle"
-						(admFwkButtonOnClick)="disabled = !disabled"
-						[admFwkButtonType]="'submit'">
-		</adm-fwk-button>
-	</li>
-	<li>Disabled: {{disabled}}</li>
-</ul>
+<div class="container">
+	<div class="row">
+		<div class="col mt-2">
+			<adm-fwk-button admFwkButtonLabel="Toggle disabled"
+							(admFwkButtonOnClick)="disabled = !disabled"
+							[admFwkButtonType]="'submit'">
+			</adm-fwk-button>
+		</div>
+		<div class="col mt-2">
+			<adm-fwk-button [admFwkButtonDisabled]="disabled"></adm-fwk-button>
+		</div>
+		<div class="col mt-2">
+			<adm-fwk-button admFwkButtonLabel="Disabled button"
+							[admFwkButtonDisabled]="disabled">
+			</adm-fwk-button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col mt-2">
+			<adm-fwk-button admFwkButtonLabel="Wrong type button"
+							[admFwkButtonType]="'Type'">
+			</adm-fwk-button>
+		</div>
+		<div class="col mt-2">
+			<adm-fwk-button admFwkButtonLabel="Wrong style button"
+							[admFwkButtonStyle]="'Style'">
+			</adm-fwk-button>
+		</div>
+		<div class="col mt-2">
+			<adm-fwk-button admFwkButtonLabel="Correct style button via string"
+							[admFwkButtonStyle]="'btn-success'">
+			</adm-fwk-button>
+		</div>
+		<div class="col mt-2">
+			<adm-fwk-button admFwkButtonLabel="Correct style button via enum"
+							[admFwkButtonStyle]="buttonStyles.Success">
+			</adm-fwk-button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col mt-2">
+			<adm-fwk-button admFwkButtonLabel="Toggle outline"
+							(admFwkButtonOnClick)="outline = !outline"
+							[admFwkButtonType]="'submit'">
+			</adm-fwk-button>
+		</div>
+		<div class="col mt-2">
+			<adm-fwk-button admFwkButtonLabel="Outline success"
+							[admFwkButtonStyle]="buttonStyles.Success"
+							[admFwkButtonOutline]="outline">
+			</adm-fwk-button>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col mt-2">
+			<adm-fwk-button admFwkButtonLabel="Random style"
+							(admFwkButtonOnClick)="randomStyle()"
+							[admFwkButtonType]="'submit'">
+			</adm-fwk-button>
+		</div>
+		<div class="col mt-2">
+			<adm-fwk-button admFwkButtonLabel="Auto style"
+							[admFwkButtonStyle]="style">
+			</adm-fwk-button>
+		</div>
+	</div>
+</div>
 

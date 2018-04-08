@@ -48,6 +48,32 @@ export class AdmFwkButtonConfigService {
 		this._style = value;
 	}
 
+	/**
+	 * Disable the button, block all Output callbacks and change the UI
+	 */
+	private _disabled: boolean = false;
+
+	public get disabled(): boolean {
+		return this._disabled;
+	}
+
+	public set disabled(value: boolean) {
+		this._disabled = value;
+	}
+
+	/**
+	 * Reverse the UI of the button depending on the `style` attribute
+	 */
+	private _outline: boolean = false;
+
+	public get outline(): boolean {
+		return this._outline;
+	}
+
+	public set outline(value: boolean) {
+		this._outline = value;
+	}
+
 	public constructor() {
 	}
 }
